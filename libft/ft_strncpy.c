@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idaeho <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: idaeho <idaeho@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/21 22:05:43 by idaeho            #+#    #+#             */
-/*   Updated: 2019/05/22 20:46:24 by idaeho           ###   ########.fr       */
+/*   Created: 2019/05/02 19:42:56 by idaeho            #+#    #+#             */
+/*   Updated: 2019/05/06 19:07:32 by idaeho           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_FILLIT_H
-# define FT_FILLIT_H
-# define BUFF_SIZE 8
+#include "libft.h"
 
-#include <fcntl.h>
-#include <sys/types.h>
-#include <sys/uio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include "./libft/includes/libft.h"
+char	*ft_strncpy(char *dest, const char *src, size_t len)
+{
+	size_t	i;
 
-#endif
+	i = 0;
+	while (i < len)
+	{
+		if (src[i])
+			dest[i] = src[i];
+		else
+			while (i < len)
+				dest[i++] = '\0';
+		i++;
+	}
+	return (dest);
+}

@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idaeho <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: idaeho <idaeho@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/21 22:05:43 by idaeho            #+#    #+#             */
-/*   Updated: 2019/05/22 20:46:24 by idaeho           ###   ########.fr       */
+/*   Created: 2019/05/03 17:28:51 by idaeho            #+#    #+#             */
+/*   Updated: 2019/05/06 17:30:16 by idaeho           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_FILLIT_H
-# define FT_FILLIT_H
-# define BUFF_SIZE 8
+#include "libft.h"
 
-#include <fcntl.h>
-#include <sys/types.h>
-#include <sys/uio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include "./libft/includes/libft.h"
+char	*ft_strrchr(const char *s, int c)
+{
+	size_t	len;
 
-#endif
+	len = ft_strlen(s);
+	if ((char)c == '\0')
+		return ((char *)s + len);
+	while (len--)
+		if (*(s + len) == c)
+			return ((char *)(s + len));
+	return (NULL);
+}

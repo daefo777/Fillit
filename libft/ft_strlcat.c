@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: idaeho <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/21 22:05:43 by idaeho            #+#    #+#             */
-/*   Updated: 2019/05/22 20:46:24 by idaeho           ###   ########.fr       */
+/*   Created: 2019/05/02 21:08:56 by idaeho            #+#    #+#             */
+/*   Updated: 2019/05/03 16:44:48 by idaeho           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_FILLIT_H
-# define FT_FILLIT_H
-# define BUFF_SIZE 8
+#include "libft.h"
 
-#include <fcntl.h>
-#include <sys/types.h>
-#include <sys/uio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include "./libft/includes/libft.h"
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
+{
+	size_t	i;
+	size_t	j;
 
-#endif
+	i = 0;
+	j = 0;
+	while (dst[i] && i < size)
+		i++;
+	while (src[j] && (i + j + 1) < size)
+	{
+		dst[i + j] = src[j];
+		j++;
+	}
+	if (i < size)
+		dst[i + j] = '\0';
+	return (i + ft_strlen(src));
+}

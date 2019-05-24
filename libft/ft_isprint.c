@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: idaeho <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/21 22:05:43 by idaeho            #+#    #+#             */
-/*   Updated: 2019/05/22 20:46:24 by idaeho           ###   ########.fr       */
+/*   Created: 2019/05/03 16:50:32 by idaeho            #+#    #+#             */
+/*   Updated: 2019/05/03 16:53:00 by idaeho           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_FILLIT_H
-# define FT_FILLIT_H
-# define BUFF_SIZE 8
+#include "libft.h"
 
-#include <fcntl.h>
-#include <sys/types.h>
-#include <sys/uio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include "./libft/includes/libft.h"
-
-#endif
+int		ft_isprint(int c)
+{
+	return (c >= 32 && c <= 126);
+}

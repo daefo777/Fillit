@@ -3,36 +3,34 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: idaeho <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: idaeho <idaeho@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/05/21 22:08:03 by idaeho            #+#    #+#              #
-#    Updated: 2019/05/22 20:44:29 by idaeho           ###   ########.fr        #
+#    Created: 2019/05/06 16:02:29 by idaeho            #+#    #+#              #
+#    Updated: 2019/05/22 20:44:57 by idaeho           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME= fillit
+NAME=libft.a
 
-SRCS= *.c
+SRCS=ft_*.c
 
-OBJECTS= *.o
+OBJECTS=ft_*.o
 
-CC= gcc
-
-FLAGS= -Wall -Wextra -Werror
-
-INCLUDES= -I libft/includes
+INCLUDES=./
 
 all: $(NAME)
 
-$(NAME)=
-		$(CC) $(FLAGS) $(INCLUDES) -c $(SRCS)
-		$(CC) -o $(NAME) $(OBJECTS) $(INCLUDES) -L libft/ -lft
+$(NAME): $(SRCS) libft.h
+	gcc -Wall -Wextra -Werror -I$(INCLUDES) -c $(SRCS)
+	ar rc $(NAME) $(OBJECTS)
+	ranlib $(NAME)
+
 clean:
-	/bin/rm -f $(OBJECTS) 
+	/bin/rm -f $(OBJECTS)
 
 fclean: clean
 	/bin/rm -f $(NAME)
 
-re : fclean all
+re: fclean all
 
 .PHONY: clean fclean all re
