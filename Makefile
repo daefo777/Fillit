@@ -6,13 +6,13 @@
 #    By: idaeho <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/21 22:08:03 by idaeho            #+#    #+#              #
-#    Updated: 2019/05/22 20:44:29 by idaeho           ###   ########.fr        #
+#    Updated: 2019/05/26 15:16:42 by idaeho           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= fillit
 
-SRCS= *.c
+SRCS= main.c read_fillit.c poscheck.c blockcheck.c validcheck.c charcheck.c
 
 OBJECTS= *.o
 
@@ -24,9 +24,11 @@ INCLUDES= -I libft/includes
 
 all: $(NAME)
 
-$(NAME)=
-		$(CC) $(FLAGS) $(INCLUDES) -c $(SRCS)
-		$(CC) -o $(NAME) $(OBJECTS) $(INCLUDES) -L libft/ -lft
+$(NAME):
+	make -C libft fclean && make -C libft	
+	$(CC) $(FLAGS) $(INCLUDES) -c $(SRCS)
+	$(CC) -o $(NAME) $(OBJECTS) $(INCLUDES) -L libft/ -lft
+
 clean:
 	/bin/rm -f $(OBJECTS) 
 

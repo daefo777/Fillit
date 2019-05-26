@@ -6,7 +6,7 @@
 #    By: idaeho <idaeho@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/06 16:02:29 by idaeho            #+#    #+#              #
-#    Updated: 2019/05/22 20:44:57 by idaeho           ###   ########.fr        #
+#    Updated: 2019/05/26 15:12:36 by idaeho           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,11 @@ SRCS=ft_*.c
 
 OBJECTS=ft_*.o
 
-INCLUDES=./
+INCLUDES=./includes
 
 all: $(NAME)
 
-$(NAME): $(SRCS) libft.h
+$(NAME):
 	gcc -Wall -Wextra -Werror -I$(INCLUDES) -c $(SRCS)
 	ar rc $(NAME) $(OBJECTS)
 	ranlib $(NAME)

@@ -1,41 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validcheck.c                                       :+:      :+:    :+:   */
+/*   blockcheck.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: idaeho <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/23 13:42:53 by idaeho            #+#    #+#             */
-/*   Updated: 2019/05/26 15:57:28 by idaeho           ###   ########.fr       */
+/*   Created: 2019/05/26 13:15:50 by idaeho            #+#    #+#             */
+/*   Updated: 2019/05/26 16:03:52 by idaeho           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int			validcheck(char *line, char **block, int size)
+int		blockcheck(char *line)
 {
+	int		touch;
 	int		i;
-	char	*tmp;
 
+	touch = 0;
 	i = -1;
-	while (++i < size)
+	while (line[++i] && i < 21)
 	{
-		if (charcheck(line, '.') == 12 && charcheck(line, '#') == 4 \
-				&& poscheck(line) && blockcheck(line))
-		{
-			block[i] = ft_strsub(line, 0, 21);
-			tmp = ft_strdup(line + 21);
-			free(line);
-			line = tmp;
-		}
-		else
-		{
-			while (i)
-				free(block[--i]);
-			free(block);
-			block = NULL;
-			return (-1);
-		}
+		if (i - 1 >= 0 && line[i] == '#' && line[i - 1] == '#')
+			touch++;
+		if (i + 1 < 21 && line[i] == '#' && line[i + 1] == '#')
+			touch++;
+		if (i - 5 >= 0 && line[i] == '#' && line[i - 5] == '#')
+			touch++;
+		if (i + 5 < 21 && line[i] == '#' && line[i + 5] == '#')
+			touch++;
 	}
-	return ((i == size) ? 0 : -1);
+	printf("touch = %d\n", touch);
+	if (touch == 6 || touch == 8)
+		return (1);
+	return (0);
 }
