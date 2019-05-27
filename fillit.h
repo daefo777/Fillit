@@ -6,13 +6,13 @@
 /*   By: idaeho <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 22:05:43 by idaeho            #+#    #+#             */
-/*   Updated: 2019/05/26 15:23:04 by idaeho           ###   ########.fr       */
+/*   Updated: 2019/05/26 23:16:19 by idaeho           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_FILLIT_H
 # define FT_FILLIT_H
-# define BUFF_SIZE 8
+# define BUFF_SIZE 9999
 
 #include <fcntl.h>
 #include <sys/types.h>
@@ -26,6 +26,9 @@ int		validcheck(char *line, char **block, int size);
 int		blockcheck(char *line);
 int		charcheck(char *str, char c);
 int		poscheck(char *line);
-char	**read_fillit(int fd, char *line);
+char	*buildbase(int block_nbr);
+void	letterchange(char **block, int i);
+char	**read_fillit(int fd, char *line, int *base);
+int		assemble(char **block, int block_nbr);
 
 #endif

@@ -1,36 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   blockcheck.c                                       :+:      :+:    :+:   */
+/*   assemble.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: idaeho <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/26 13:15:50 by idaeho            #+#    #+#             */
-/*   Updated: 2019/05/26 16:16:00 by idaeho           ###   ########.fr       */
+/*   Created: 2019/05/26 16:14:39 by idaeho            #+#    #+#             */
+/*   Updated: 2019/05/26 23:22:26 by idaeho           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		blockcheck(char *line)
+int		assemble(char **block, int block_nbr)
 {
-	int		touch;
 	int		i;
+	int		j;
+	int		k;
+	char	*base;
 
-	touch = 0;
-	i = -1;
-	while (line[++i] && i < 21)
+	i = 0;
+	j = 0;
+	k = 0;
+	base = buildbase(block_nbr);
+	if (!base)
 	{
-		if (i - 1 >= 0 && line[i] == '#' && line[i - 1] == '#')
-			touch++;
-		if (i + 1 < 21 && line[i] == '#' && line[i + 1] == '#')
-			touch++;
-		if (i - 5 >= 0 && line[i] == '#' && line[i - 5] == '#')
-			touch++;
-		if (i + 5 < 21 && line[i] == '#' && line[i + 5] == '#')
-			touch++;
+		ft_strdel(&base);
+		while (i < block_nbr)
+			ft_strdel(&block[i++]);
+		free(block);
+		block = NULL;
+		return (-1);
 	}
-	if (touch == 6 || touch == 8)
-		return (1);
-	return (0);
+	printf("start base =\n%s", base);
+	while (block[i])
+	{
+		while (block[i][j])
+		{
+			if (block[i][j] == '#')
+				base[k] = block[i][j];
+			j++;
+			k++;
+		}
+		i++;
+	}
+	return (1);
 }

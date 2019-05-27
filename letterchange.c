@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   charcheck.c                                        :+:      :+:    :+:   */
+/*   letterchange.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: idaeho <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/26 15:07:43 by idaeho            #+#    #+#             */
-/*   Updated: 2019/05/26 16:12:15 by idaeho           ###   ########.fr       */
+/*   Created: 2019/05/26 17:59:41 by idaeho            #+#    #+#             */
+/*   Updated: 2019/05/26 20:04:03 by idaeho           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		charcheck(char *str, char c)
+void	letterchange(char **block, int i)
 {
-	int	i;
-	int	count;
+	int	j;
 
-	i = -1;
-	count = 0;
-	while (++i < 21)
+	j = 0;
+	while (block[i][j])
 	{
-		if (str[i] == c)
-			count++;
+		if (block[i][j] == '#')
+			block[i][j] = 'A' + i;
+		j++;
 	}
-	return (count);
 }

@@ -6,13 +6,13 @@
 /*   By: idaeho <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/26 15:14:49 by idaeho            #+#    #+#             */
-/*   Updated: 2019/05/26 15:54:14 by idaeho           ###   ########.fr       */
+/*   Updated: 2019/05/26 23:15:11 by idaeho           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char		**read_fillit(int fd, char *line) 
+char		**read_fillit(int fd, char *line, int *block_nbr) 
 {
 	char	buf[BUFF_SIZE + 1];
 	char	**block;
@@ -28,9 +28,8 @@ char		**read_fillit(int fd, char *line)
 		free(line);
 		line = tmp;
 	}
-	printf("line =\n%s", line);
 	size = (ft_strlen(line) % 21 == 0) ? ft_strlen(line) / 21 : 0;
-	printf("size = %d\n", size);
+	*block_nbr = size;
 	if (!size || sign < 0 || \
 			!(block = (char **)malloc(sizeof(char **) * (size + 1))))
 	{
