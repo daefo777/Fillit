@@ -6,14 +6,14 @@
 #    By: idaeho <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/21 22:08:03 by idaeho            #+#    #+#              #
-#    Updated: 2019/05/26 22:57:54 by idaeho           ###   ########.fr        #
+#    Updated: 2019/05/28 23:02:02 by idaeho           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= fillit
 
 SRCS= main.c read_fillit.c poscheck.c blockcheck.c validcheck.c charcheck.c \
-	  letterchange.c assemble.c buildbase.c
+	  assemble.c buildbase.c free_fillit.c
 
 OBJECTS= *.o
 

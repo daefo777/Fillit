@@ -6,43 +6,27 @@
 /*   By: idaeho <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/26 16:14:39 by idaeho            #+#    #+#             */
-/*   Updated: 2019/05/26 23:22:26 by idaeho           ###   ########.fr       */
+/*   Updated: 2019/05/28 22:56:09 by idaeho           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		assemble(char **block, int block_nbr)
+char	**assemble(char **block, int block_nbr)
 {
 	int		i;
-	int		j;
-	int		k;
-	char	*base;
+	int		nbr;
+	char	**base;
 
-	i = 0;
-	j = 0;
-	k = 0;
-	base = buildbase(block_nbr);
-	if (!base)
+	i = -1;
+	nbr = 3;
+	while (++i < block_nbr)
 	{
-		ft_strdel(&base);
-		while (i < block_nbr)
-			ft_strdel(&block[i++]);
-		free(block);
-		block = NULL;
-		return (-1);
+		if (block_nbr * 4 < nbr * nbr)
+			break;
+		nbr++;
 	}
-	printf("start base =\n%s", base);
-	while (block[i])
-	{
-		while (block[i][j])
-		{
-			if (block[i][j] == '#')
-				base[k] = block[i][j];
-			j++;
-			k++;
-		}
-		i++;
-	}
-	return (1);
+	base = buildbase(nbr);
+	base[0][0] = block[0][0];	
+	return (base);
 }

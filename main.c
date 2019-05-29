@@ -6,7 +6,7 @@
 /*   By: idaeho <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 22:05:37 by idaeho            #+#    #+#             */
-/*   Updated: 2019/05/26 22:56:06 by idaeho           ###   ########.fr       */
+/*   Updated: 2019/05/28 22:51:04 by idaeho           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,24 @@
 int		main(int ac, char **av)
 {
 	int		fd;
+	int		block_nbr;
 	char	*line;
+	char	**base;
 	char	**block;
-	int		start;
 
 	if (ac == 2)
 	{
 		fd = open(av[1], O_RDONLY);
-		if (fd < 0 || !(line = ft_strnew(0)))
-				exit(1);
-		block = read_fillit(fd, line, &start);
-		if (!block)
+		if (fd < 0 || !(line = ft_strnew(0)) || \
+			!(block = read_fillit(fd, line, &block_nbr)) \
+			|| !(base = assemble(block, block_nbr)))
 		{
 			ft_putstr("error\n");
 			exit(1);
 		}
-		if (!assemble(block, start))
-			exit(1);
+		int	 i = -1;
+		while (base[++i])
+			ft_putstr(base[i]);
 		close(fd);
 		exit (0);
 	}

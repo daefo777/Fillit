@@ -6,7 +6,7 @@
 /*   By: idaeho <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 22:05:43 by idaeho            #+#    #+#             */
-/*   Updated: 2019/05/26 23:16:19 by idaeho           ###   ########.fr       */
+/*   Updated: 2019/05/28 23:02:22 by idaeho           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ int		validcheck(char *line, char **block, int size);
 int		blockcheck(char *line);
 int		charcheck(char *str, char c);
 int		poscheck(char *line);
-char	*buildbase(int block_nbr);
-void	letterchange(char **block, int i);
+char	**buildbase(int nbr);
+void	free_fillit(char **block, int block_nbr);
 char	**read_fillit(int fd, char *line, int *base);
-int		assemble(char **block, int block_nbr);
+char	**assemble(char **block, int block_nbr);
+void	letterchange(char *s, int i);
 
 #endif

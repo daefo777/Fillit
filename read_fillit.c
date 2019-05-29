@@ -6,7 +6,7 @@
 /*   By: idaeho <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/26 15:14:49 by idaeho            #+#    #+#             */
-/*   Updated: 2019/05/26 23:15:11 by idaeho           ###   ########.fr       */
+/*   Updated: 2019/05/28 22:52:09 by idaeho           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 char		**read_fillit(int fd, char *line, int *block_nbr) 
 {
 	char	buf[BUFF_SIZE + 1];
-	char	**block;
-	int		size;
 	char	*tmp;
+	int		size;
 	int		sign;
+	char	**block;
 
 	while ((sign = read(fd, buf, BUFF_SIZE)) > 0)
 	{
