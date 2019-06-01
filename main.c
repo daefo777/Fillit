@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idaeho <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: idaeho <idaeho@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 22:05:37 by idaeho            #+#    #+#             */
-/*   Updated: 2019/05/28 22:51:04 by idaeho           ###   ########.fr       */
+/*   Updated: 2019/05/30 21:22:24 by idaeho           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		main(int ac, char **av)
 	int		fd;
 	int		block_nbr;
 	char	*line;
-	char	**base;
+	char	*base;
 	char	**block;
 
 	if (ac == 2)
@@ -30,9 +30,8 @@ int		main(int ac, char **av)
 			ft_putstr("error\n");
 			exit(1);
 		}
-		int	 i = -1;
-		while (base[++i])
-			ft_putstr(base[i]);
+		else
+			ft_putstr(base);
 		close(fd);
 		exit (0);
 	}
